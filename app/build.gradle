@@ -1,0 +1,41 @@
+buildscript {
+  ext.kotlin_version = '1.2.60-eap-44'
+
+  repositories {
+    jcenter()
+    maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
+    google()
+  }
+
+  dependencies {
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlin_version}"
+    classpath 'com.android.tools.build:gradle:3.1.3'
+  }
+}
+
+repositories {
+  jcenter()
+  maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+  compileSdkVersion 27
+
+  defaultConfig {
+    minSdkVersion 19
+    targetSdkVersion 27
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+    }
+  }
+}
+
+dependencies {
+  implementation "org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}"
+}
